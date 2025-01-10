@@ -1,15 +1,20 @@
+let rec read_lines channel =
+        try
+                let line = input_line channel in
+                line :: read_lines channel
+        with End_of_file -> []
+
 let get_jokes file_name =
         let channel = open_in file_name in
-        let buffer = ref [] in
-        try
-                while true do
-                        let line = input_line channel in
-                        buffer := line :: !buffer
-                done;
-                [||]
-        with End_of_file ->
-                close_in channel;
-                Array.of_list (List.rev !buffer)
+        let buffer =
+                try
+                        read_lines channel
+                with e ->
+                        close_in_noerr channel;
+                        raise e
+        in
+        close_in channel;
+        Array.of_list buffer
 
 
 let random_jokes file_name =
