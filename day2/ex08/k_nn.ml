@@ -1,4 +1,5 @@
 type radar = float array * string
+module StringMap = Map.Make(String)
 
 let eu_dist_part_1 f1 f2 = (f1 -. f2) ** 2.
 
@@ -42,13 +43,25 @@ let examples_of_file file_path =
         close_in channel;
         examples
 
-let one_nn radars radar =
-        let nearest = ref ("", Float.max_float) in
-        let update_nearest n =
-                let dist = eu_dist (fst !n) (fst radar) in
-                if snd !nearest > dist then begin 
-                        nearest := (snd !n, dist);
-                end
+let k_nn radars k radar =
+        let nearests = Array.make k ("", Float.max_float) in
+        let compare_nearests (name0, dist0) (name1, dist1) = Float.compare dist0 dist1 in
+        let update_nearests (list, t) =
+                let dist = eu_dist list (fst radar) in
+                if dist < snd nearests.(k - 1) then (
+                        nearests.(k - 1) <- (t, dist);
+                        Array.sort compare_nearests nearests
+                )
         in
-        List.iter update_nearest radars;
-        fst !nearest
+        List.iter update_nearests radars;
+        let new_nearests : int StringMap.t ref = ref StringMap.empty in
+        let update_map (name, _) = 
+                new_nearests := StringMap.update name ( function
+                        | None -> Some 1
+                        | Some count -> Some (count + 1)
+                ) !new_nearests;
+        in
+        Array.iter update_map nearests;
+        StringMap.fold (fun name count (best_name, best_count) ->
+                if count > best_count then (name, count)
+                else (best_name, best_count)) !new_nearests ("", 0)
