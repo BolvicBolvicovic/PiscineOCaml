@@ -1,4 +1,4 @@
-let predicate_char_is_a char = char = 'a';;
+let predicate_char_is_a char = char = 'a'
 
 let ft_string_all predicate str =
         let str_len = String.length str in
@@ -10,9 +10,10 @@ let ft_string_all predicate str =
                 else
                         true
         in
-        loop 0;;
+        loop 0
 
 (* TESTS *)
-assert (ft_string_all predicate_char_is_a "aaaaaaaaaaaaa" = true);;
-assert (ft_string_all predicate_char_is_a "aaaaaadaaaa" = false);;
-print_endline "ALL TESTS PASS"
+let () =
+        assert (ft_string_all predicate_char_is_a "aaaaaaaaaaaaa" = true);
+        assert (ft_string_all predicate_char_is_a "aaaaaadaaaa" = false);
+        print_endline "ALL TESTS PASS";

@@ -8,7 +8,8 @@ let ft_print_rev str =
                         loop x (y - 1)
                 end
         in
-        loop str str_i;;
+        loop str str_i
 
 (* TEST *)
-ft_print_rev "tester du 86";;
+let () =
+        ft_print_rev "tester du 86";

@@ -4,7 +4,7 @@ let print_num x y =
         print_char ' ';
         if y < 10 then print_int 0;
         print_int y;
-        if x = 98 && y = 99 then print_char '\n' else begin print_char ','; print_char ' ' end;;
+        if x = 98 && y = 99 then print_char '\n' else begin print_char ','; print_char ' ' end
 
 let ft_print_comb2 () =
         let rec loop x y =
@@ -18,7 +18,8 @@ let ft_print_comb2 () =
                 loop x (y + 1)
         end
         in
-        loop 0 1;;
+        loop 0 1
 
 (* TEST *)
-ft_print_comb2 ();;
+let () =
+        ft_print_comb2 ();

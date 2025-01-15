@@ -8,7 +8,8 @@ let ft_print_alphabet () =
                 end
         in
         loop 97;
-        print_char '\n';;
+        print_char '\n'
 
 (* TEST *)
-ft_print_alphabet ();;
+let () =
+        ft_print_alphabet ();

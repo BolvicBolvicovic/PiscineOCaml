@@ -6,10 +6,12 @@ let rec ft_countdown x =
         end else begin
                 print_int 0;
                 print_char '\n';
-        end;;
+        end
 
 
 (* TESTS *)
-ft_countdown 8;;
-ft_countdown (-7);;
-ft_countdown 0;;
+
+let () =
+        ft_countdown 8;
+        ft_countdown (-7);
+        ft_countdown 0;

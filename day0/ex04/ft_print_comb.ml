@@ -2,9 +2,7 @@ let print_num x y z =
         print_int x;
         print_int y;
         print_int z;
-        if x = 7 && y = 8 && z = 9 then
-                ()
-        else print_string ", ";;
+        if x = 7 && y = 8 && z = 9 then () else print_string ", "
 
 let ft_print_comb () = 
         let rec loop x y z =
@@ -22,7 +20,8 @@ let ft_print_comb () =
                         loop x y (z + 1)
                 end
         in
-        loop 0 1 2;;
+        loop 0 1 2
 
 (* TEST *)
-ft_print_comb ();;
+let () =
+        ft_print_comb ();

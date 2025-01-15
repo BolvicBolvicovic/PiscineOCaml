@@ -11,10 +11,11 @@ let ft_is_palindrome str =
                         else
                                 loop (i + 1)
                 in
-                loop 0;;
+                loop 0
 
 (* TESTS *)
-assert (ft_is_palindrome "abba" = true);;
-assert (ft_is_palindrome "abtba" = true);;
-assert (ft_is_palindrome "abtbaa" = false);;
-print_endline "ALL TESTS PASS"
+let () = 
+        assert (ft_is_palindrome "abba" = true);
+        assert (ft_is_palindrome "abtba" = true);
+        assert (ft_is_palindrome "abtbaa" = false);
+        print_endline "ALL TESTS PASS";

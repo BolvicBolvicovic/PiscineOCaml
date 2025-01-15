@@ -1,9 +1,4 @@
-let rec rec_power x y z =
-        if y = 0 then
-                z
-        else
-                rec_power x (y - 1) (z * x);;
-
+let rec rec_power x y z = if y = 0 then z else rec_power x (y - 1) (z * x)
 
 let ft_power x y = 
         if x = 0 then
@@ -13,10 +8,11 @@ let ft_power x y =
         else if y = 1 then
                 x
         else 
-                rec_power x y 1;;
+                rec_power x y 1
 
 (* TEST *)
-assert (ft_power 2 4 = 16);;
-assert (ft_power 3 0 = 1);;
-assert (ft_power 0 5 = 0);;
-print_endline "TEST SUCCEDED!"
+let () =
+        assert (ft_power 2 4 = 16);
+        assert (ft_power 3 0 = 1);
+        assert (ft_power 0 5 = 0);
+        print_endline "TEST SUCCEDED!"
